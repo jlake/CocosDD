@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
+#import "GameLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
@@ -110,7 +110,14 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+	//[[CCDirector sharedDirector] runWithScene: [GameLayer scene]];
+    // for Drag & Drop
+    CCScene *scene = [GameLayer scene];
+    GameLayer *layer = (GameLayer *)[scene.children objectAtIndex:0];
+    UIPanGestureRecognizer *gestureRecognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)] autorelease];
+    [viewController.view addGestureRecognizer:gestureRecognizer];
+    
+    [[CCDirector sharedDirector] runWithScene:scene];
 }
 
 
