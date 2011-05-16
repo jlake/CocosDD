@@ -57,7 +57,7 @@
             break;
         }
     }
-    NSLog(@"newSprite: %@", newSprite);
+    //NSLog(@"newSprite: %@", newSprite);
     if(newSprite != selSprite) {
         [selSprite stopAllActions];
         [selSprite runAction:[CCRotateTo actionWithDuration:0.1 angle:0]];
